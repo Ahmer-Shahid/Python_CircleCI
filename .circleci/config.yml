@@ -17,7 +17,12 @@ jobs:
     docker:
       - image: cimg/python:3.11
     steps:
-      - run: echo "Deploying to production server"
+      - run: # Install the AWS CLI if it is not already included in the docker image
+            name: Install awscli
+            command: sudo pip install awscli
+      - run: # Deploy to S3 using the sync command
+          name: Deploy to S3
+          command: aws s3 sync arn:aws:s3:::pycircleci
 
 workflows:
   build_and_test_deploy:
