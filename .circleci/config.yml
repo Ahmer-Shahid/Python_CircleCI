@@ -22,7 +22,7 @@ jobs:
             command: pip install awscli
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
-          command: aws s3 cp s3://pycircleci/Empty .
+          command: aws s3 sync . s3://pycircleci
 
 workflows:
   build_and_test_deploy:
