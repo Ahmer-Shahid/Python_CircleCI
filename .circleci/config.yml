@@ -22,7 +22,8 @@ jobs:
             command: pip install awscli
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
-          command: aws s3 sync C:\Users\DELL\Desktop\reactfirstapp\CircleCi-python s3://pycircleci/ --exclude "*" --include "*" --debug
+          command: aws s3 sync . s3://pycircleci/ 
+          # --exclude "*" --include "*" --debug
 
 workflows:
   build_and_test_deploy:
